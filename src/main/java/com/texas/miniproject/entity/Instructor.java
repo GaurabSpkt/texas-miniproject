@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -18,5 +20,11 @@ public class Instructor {
     private String name;
     private String email;
     private String phone;
-    private Long departmentId;
+
+    @ManyToOne
+    private Department departmentId;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "classes_id")
+    private List<Classes> classes;
 }

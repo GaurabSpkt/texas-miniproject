@@ -20,6 +20,10 @@ public class Department {
     private String departmentName;
     private String departmentHead;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name= "course_id")
+    @JoinColumn(name = "course_id")
     private List<Course> courses;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "instructor_id")
+    private List<Instructor> instructors;
 }
